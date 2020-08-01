@@ -16,13 +16,13 @@ A web application that allows users to write, save and delete notes. This applic
 
 
 ## Installation
-To use with Heroku;
-To install with node.js, first clone the repository then run the command "npm install".
+To use with Heroku, <br/>
+To install with node.js, first clone the repository then run the command ```npm install```.
 
 
 ## Usage
-To use with Heroku;
-To use with node.js, run the command "node server" inside of the "Develop" folder to create a new instance. Open your browser and go to "localhost:3000" to use the application.
+To use with Heroku, <br/>
+To use with node.js, run the command ```node server``` inside of the "Develop" folder to create a new instance. Open your browser and go to "localhost:3000" to use the application.
 
 
 ## License
