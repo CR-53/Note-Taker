@@ -1,7 +1,7 @@
 # Note Taker
 
 ## Description
-A web application that allows users to write, save and delete notes. This application uses an node.js express backend and has been deployed on Heroku.  
+A web application that allows users to write, save and delete notes. This application uses a node.js express backend and has been deployed on Heroku.  
 
 
 ![License badge](https://img.shields.io/badge/license-MIT-green)
@@ -16,11 +16,13 @@ A web application that allows users to write, save and delete notes. This applic
 
 
 ## Installation
-Run the command "npm install" inside node.js to install.
+To use with Heroku;
+To install with node.js, first clone the repository then run the command "npm install".
 
 
 ## Usage
-Run the command "node server" inside of the "Develop" folder to create a new instance. Open your browser and go to "localhost:3000" to use the application.
+To use with Heroku;
+To use with node.js, run the command "node server" inside of the "Develop" folder to create a new instance. Open your browser and go to "localhost:3000" to use the application.
 
 
 ## License
@@ -30,10 +32,6 @@ MIT</br>
 
 ## Contribution
 Not open for contributions.
-
-
-## Tests
-
 
 
 ## Questions
