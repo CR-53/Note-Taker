@@ -11,8 +11,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 
-var test = "this route works"
-
+var storedNotes = JSON.parse(fs.readFileSync("db/db.json"));
 
 // route for notes.html
 app.get("/notes", (req, res) => {
@@ -22,18 +21,32 @@ app.get("/notes", (req, res) => {
 
 // route for reading the db.json file
 app.get("/api/notes", (req, res) => {
-    res.json(test)
+    return res.json(storedNotes);
 });
 
 // route for posting to the db.json file
 app.post("/api/notes", (req, res) => {
-    var test2 = req.body;
-    console.log(test2);
+    var newNote = {
+        id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+        title: req.body.title,
+        text: req.body.text
+    } 
+    storedNotes.push(newNote);
+    fs.writeFileSync("db/db.json", JSON.stringify(storedNotes));
+    res.end();
 });
 
 // route for reading the db.json file
-app.delete("/api/notes:id", (req, res) => {
-    res.json(test)
+app.delete("/api/notes/:id", (req, res) => {
+    // stores the id of the selected note to delete
+    var selectedNoteId = req.params.id;
+    // finds where the index of where id of the selected note to delete matches inside of the database
+    var selectedNoteIndex = storedNotes.findIndex(note => note.id === selectedNoteId);
+    // removes the selected note to delete using the index found above
+    storedNotes.splice(selectedNoteIndex, 1); 
+    // rewrites the updated database to the page
+    fs.writeFileSync("db/db.json", JSON.stringify(storedNotes));
+    res.end();
 });
 
 // route for index.html
