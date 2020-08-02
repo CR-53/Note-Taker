@@ -6,16 +6,16 @@ const fs = require("fs");
 const PORT =  process.env.PORT || 3000;
 
 //Reading static file inside public folders
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/Develop/public'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 
-var storedNotes = JSON.parse(fs.readFileSync("db/db.json"));
+var storedNotes = JSON.parse(fs.readFileSync("Develop/db/db.json"));
 
 // route for notes.html
 app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/notes.html"));
+    res.sendFile(path.join(__dirname + "/Develop/public/notes.html"));
 });
 
 
@@ -32,7 +32,7 @@ app.post("/api/notes", (req, res) => {
         text: req.body.text
     } 
     storedNotes.push(newNote);
-    fs.writeFileSync("db/db.json", JSON.stringify(storedNotes));
+    fs.writeFileSync("Develop/db/db.json", JSON.stringify(storedNotes));
     res.end();
 });
 
@@ -45,13 +45,13 @@ app.delete("/api/notes/:id", (req, res) => {
     // removes the selected note to delete using the index found above
     storedNotes.splice(selectedNoteIndex, 1); 
     // rewrites the updated database to the page
-    fs.writeFileSync("db/db.json", JSON.stringify(storedNotes));
+    fs.writeFileSync("Develop/db/db.json", JSON.stringify(storedNotes));
     res.end();
 });
 
 // route for index.html
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/index.html"));
+    res.sendFile(path.join(__dirname + "/Develop/public/index.html"));
 });
 
 app.listen(PORT, function () {
