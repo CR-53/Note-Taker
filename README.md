@@ -16,7 +16,7 @@ A web application that allows users to write, save and delete notes. This applic
 
 
 ## Installation
-[View application in Heroku](https://note-taker-cr53.herokuapp.com/)
+[View application in Heroku](https://note-taker-cr53.herokuapp.com/) </br>
 To install with node.js, first clone the repository then run the command ```npm install```.
 
 
